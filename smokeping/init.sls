@@ -7,3 +7,5 @@ smokeping:
   service.running:
     - name: smokeping
     - enable: True
+    - require:
+      - pkg: smokeping

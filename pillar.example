@@ -1,0 +1,21 @@
+smokeping:
+  owner: Peter Random
+  contact: noc@email.to.nowhere
+
+  alerts:
+    from: smokealert@company.xy
+    to: alertee@address.somewhere
+
+    bigloss:
+      type: loss
+      pattern: ==0%,==0%,==0%,==0%,>0%,>0%,>0%
+      comment: suddenly there is packet loss
+
+  targets:
+    alerts: bigloss
+    LocalMachine:
+      menu: Local Machine
+      title: This host
+      remark: Pinging 127.0.0.1
+      host: localhost
+      alerts: someloss

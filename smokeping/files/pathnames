@@ -1,0 +1,8 @@
+{%- from "smokeping/map.jinja" import smokeping with context -%}
+sendmail = {{smokeping.lookup.sendmail}}
+imgcache = {{smokeping.lookup.imgcache}}
+imgurl   = {{smokeping.lookup.imgurl}}
+datadir  = {{smokeping.lookup.datadir}}
+piddir  = {{smokeping.lookup.piddir}}
+smokemail = {{smokeping.lookup.smokemail}}
+tmail = {{smokeping.lookup.tmail}}

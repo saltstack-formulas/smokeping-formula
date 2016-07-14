@@ -1,0 +1,16 @@
+{%- from "smokeping/map.jinja" import smokeping with context -%}
+*** Database ***
+
+step     = {{ smokeping.database.step }}
+pings    = {{ smokeping.database.pings }}
+
+# consfn mrhb steps total
+
+AVERAGE  0.5   1  1008
+AVERAGE  0.5  12  4320
+    MIN  0.5  12  4320
+    MAX  0.5  12  4320
+AVERAGE  0.5 144   720
+    MAX  0.5 144   720
+    MIN  0.5 144   720
+

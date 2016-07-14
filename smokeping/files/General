@@ -1,0 +1,17 @@
+{%- from "smokeping/map.jinja" import smokeping with context -%}
+*** General ***
+
+owner    = {{ salt['pillar.get']('smokeping:owner', 'Peter Random') }}
+contact  = {{ salt['pillar.get']('smokeping:contact', 'some@address.nowhere') }}
+mailhost = {{ salt['pillar.get']('smokeping:mailhost', 'my.mail.host') }}
+# NOTE: do not put the Image Cache below cgi-bin
+# since all files under cgi-bin will be executed ... this is not
+# good for images.
+cgiurl   = {{ salt['pillar.get']('smokeping:cgirul', 'http://some.url/smokeping.cgi') }}
+# specify this to get syslog logging
+syslogfacility = {{ smokeping.syslogfacility }}
+# each probe is now run in its own process
+# disable this to revert to the old behaviour
+# concurrentprobes = no
+
+@include /etc/smokeping/config.d/pathnames

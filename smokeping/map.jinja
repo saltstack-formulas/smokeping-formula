@@ -1,0 +1,35 @@
+{% set smokeping = salt['pillar.get']('smokeping', {
+     'lookup': salt['grains.filter_by']({
+        'Debian': {
+            'pkg': 'smokeping',
+            'sendmail': '/usr/sbin/sendmail',
+            'imgcache': '/var/cache/smokeping/images',
+            'imgurl': '../smokeping/images',
+            'datadir': '/var/lib/smokeping',
+            'piddir':  '/var/run/smokeping',
+            'smokemail': '/etc/smokeping/smokemail',
+            'tmail': '/etc/smokeping/tmail',
+        },
+    }),
+    'database': {
+        'step': 300,
+        'pings': 20,
+    },
+    'syslogfacility': 'local0',
+    'targets': {
+        'probe': 'FPing',
+        'title': 'Network Latency Grapher',
+    },
+    'probes': {
+        'FPing': {
+            'binary': '/usr/bin/fping',
+        },
+    },
+    'alerts': {
+        'someloss': {
+            'type': 'loss',
+            'pattern': '>0%,*12*,>0%,*12*,>0%',
+            'comment': 'loss 3 times  in a row',
+        },
+    },
+}, merge=True) %}

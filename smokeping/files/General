@@ -7,7 +7,7 @@ mailhost = {{ salt['pillar.get']('smokeping:mailhost', 'my.mail.host') }}
 # NOTE: do not put the Image Cache below cgi-bin
 # since all files under cgi-bin will be executed ... this is not
 # good for images.
-cgiurl   = {{ salt['pillar.get']('smokeping:cgirul', 'http://some.url/smokeping.cgi') }}
+cgiurl   = {{ salt['pillar.get']('smokeping:cgiurl', 'http://some.url/smokeping.cgi') }}
 # specify this to get syslog logging
 syslogfacility = {{ smokeping.syslogfacility }}
 # each probe is now run in its own process

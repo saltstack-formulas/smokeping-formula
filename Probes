@@ -1,0 +1,9 @@
+{%- from "smokeping/map.jinja" import smokeping with context -%}
+*** Probes ***
+
+{% for probe, settings in smokeping.probes.items() %}
++ {{ probe }}
+{% for key, value in settings.items() %}
+{{ key }} = {{ value }}
+{% endfor %}
+{% endfor %}

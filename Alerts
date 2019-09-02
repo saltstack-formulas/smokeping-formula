@@ -1,0 +1,15 @@
+{%- from "smokeping/map.jinja" import smokeping with context -%}
+*** Alerts ***
+
+to = {{ salt['pillar.get']('smokeping:alerts:to', 'alertee@address.somewhere') }}
+from = {{ salt['pillar.get']('smokeping:alerts:from', 'smokealert@company.xy') }}
+
+{% for alert, options in smokeping.alerts.items() -%}
+{% if options is mapping() %}
++ {{ alert }}
+{% for key, value in options.items() -%}
+{{ key }} = {{ value }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}

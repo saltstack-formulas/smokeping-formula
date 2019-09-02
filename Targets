@@ -1,0 +1,20 @@
+{%- from "smokeping/map.jinja" import smokeping with context -%}
+{%- set targets = smokeping.targets -%}
+*** Targets ***
+
+probe = {{ smokeping.targets.probe }}
+menu = Top
+title = {{ smokeping.targets.title }}
+remark = {{ salt['pillar.get']('smokeping:targets:remark', '') }}
+alerts = {{ salt['pillar.get']('smokeping:targets:alerts', '') }}
+
+{% for target, options in smokeping.targets.items() -%}
+{% if options is mapping() -%}
++ {{ target }}
+
+{% for key, value in options.items() -%}
+{{ key }} = {{ value }}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
